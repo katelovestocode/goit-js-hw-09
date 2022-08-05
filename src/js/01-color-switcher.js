@@ -1,4 +1,4 @@
-refs = {
+const refs = {
   buttonStart: document.querySelector('button[data-start]'),
   buttonStop: document.querySelector('button[data-stop]'),
   bodyEl: document.querySelector('body'),
