@@ -15,10 +15,12 @@ function getRandomHexColor() {
 }
 
 function colorBackgroundClick() {
+  // check if the button is active(default is false), when clicked second time - becomes true, then exit the scipt, do not run it
   if (isActive) {
     return;
   }
   isActive = true;
+
   intervalId = setInterval(() => {
     refs.bodyEl.style.backgroundColor = getRandomHexColor();
   }, 1000);
