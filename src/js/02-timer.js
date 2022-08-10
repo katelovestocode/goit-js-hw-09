@@ -2,7 +2,6 @@
 import flatpickr from 'flatpickr';
 // Additional styles import
 import 'flatpickr/dist/flatpickr.min.css';
-
 // notifications
 import Notiflix from 'notiflix';
 
@@ -22,7 +21,6 @@ refs.buttonEl.addEventListener('click', () => {
 // default settings for the button - disabled
 refs.buttonEl.disabled = true;
 let timer;
-
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -31,6 +29,7 @@ const options = {
 
   onClose(selectedDates) {
     if (selectedDates) {
+      // startTime is the time at this moment user is choosing the time
       const startTime = Date.now();
       // selectedTime is the time that was selected by the user and getTime() method returns a numeric representation of the date (timestamp) – the number of milliseconds
       let selectedTime = selectedDates[0].getTime();
@@ -45,6 +44,7 @@ const options = {
         refs.buttonEl.disabled = false;
       }
 
+      // timer object
       timer = {
         IntervalId: null,
 
@@ -53,7 +53,7 @@ const options = {
           if (this.IntervalId) {
             clearInterval(this.IntervalId);
           }
-          // settin Interval for IntervalId
+          // setting Interval for IntervalId
           this.IntervalId = setInterval(() => {
             // converting deltaTime from milliseconds into seconds
             deltaTime -= 1000;
