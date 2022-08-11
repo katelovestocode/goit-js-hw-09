@@ -9,6 +9,7 @@ refs.buttonStop.addEventListener('click', stopColorBackgroundClick);
 
 let isActive = false;
 let intervalId = null;
+refs.buttonStop.disabled = true;
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
@@ -23,10 +24,14 @@ function colorBackgroundClick() {
 
   intervalId = setInterval(() => {
     refs.bodyEl.style.backgroundColor = getRandomHexColor();
+    refs.buttonStop.disabled = false;
+    refs.buttonStart.disabled = true;
   }, 1000);
 }
 
 function stopColorBackgroundClick() {
   clearInterval(intervalId);
   isActive = false;
+  refs.buttonStop.disabled = true;
+  refs.buttonStart.disabled = false;
 }

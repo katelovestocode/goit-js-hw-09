@@ -49,6 +49,7 @@ const options = {
         IntervalId: null,
 
         start() {
+          refs.buttonEl.disabled = true;
           // if there are more than one IntervalId clear it and leave it the last one
           if (this.IntervalId) {
             clearInterval(this.IntervalId);
@@ -62,13 +63,11 @@ const options = {
               clearInterval(this.IntervalId);
               return null;
             }
-
             // passing deltaTime to the function that returns an object with the calculated time remaining until the end date
             const time = convertMs(deltaTime);
             // calling the function that updates values of the clock and passing converted time remaining until the end date
             updateClock(time);
             // changing the Start button status to disabled after the time was selected
-            refs.buttonEl.disabled = true;
           }, 1000);
         },
       };
